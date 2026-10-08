@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Architecture for Modular Creative Offerings</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        /* Custom Scrollbar for sleek UI */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- Chosen Palette: Warm Slate & Strategic Indigo (Slate-50 background, Slate-900 text, Indigo-600 accents, Teal-600 secondary, Amber-500 highlights) -->
+    
+    <!-- Application Structure Plan: The application is structured into 6 thematic modules rather than a linear text document. This architecture prioritizes dynamic user exploration: 1. Executive Summary & Economics (highlighting portfolio performance concentration), 2. Cross-Vertical Telemetry Explorer (enabling direct comparison of benchmark CTR/CVR/CPM across 7 industries and 3 channels), 3. Modular Production & Combinatorial Calculator (interactive calculation of variants and pod output economics), 4. Productized Service Tiers (interactive comparison of Tiers 1-3), 5. Testing Framework & Fatigue Simulator (interactive 10-week decay visualization and ROC calculator), and 6. Agency Rollout Roadmap. This structure allows agency leaders and brand marketers to directly manipulate parameters, simulate creative outcomes, and understand commercial positioning intuitively. -->
+    
+    <!-- Visualization & Content Choices: 
+    1. Portfolio Economics -> Dynamic Bar/Doughnut Chart (Chart.js) -> Hover/click interactions -> Demonstrates spend concentration (top 10% capturing 75-95% of spend).
+    2. Vertical Telemetry -> Grouped Bar Chart & Dynamic Data Table (Chart.js + JS filter) -> Dropdown filter by vertical/channel -> Allows cross-industry comparison.
+    3. Modular Output Calculator -> Interactive JS Inputs & Math Engine -> Live slider/input updates -> Demonstrates H x B x C combinatorial formula and GenAI savings.
+    4. CPC Fatigue Decay -> Line Chart with Weekly Markers (Chart.js) -> Interactive Week Slider -> Visualizes 1.0x to 1.6x CPC creep over 10 weeks.
+    5. Return on Creative (ROC) -> Interactive JS Calculator -> Input fields & dynamic ROI output -> Proves agency value over baseline ROAS.
+    NO SVG OR MERMAID JS USED. Built purely with Canvas (Chart.js) and styled Tailwind HTML/CSS. -->
+    
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="bg-indigo-600 text-white font-black text-xs px-2.5 py-1 rounded tracking-wider uppercase">STRATEGY</span>
+                    <h1 class="text-base sm:text-lg font-bold text-slate-100 truncate">Modular Creative Offerings & Telemetry</h1>
+                </div>
+                <nav class="hidden lg:flex space-x-1" id="desktop-nav">
+                    <!-- Nav items populated dynamically or statically linked -->
+                </nav>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu Dropdown / Tabs -->
+        <div class="lg:hidden bg-slate-800 border-t border-slate-700 px-2 pt-2 pb-3 overflow-x-auto whitespace-nowrap flex space-x-2" id="mobile-nav">
+            <!-- Mobile nav items -->
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Module 1: Executive Overview & Creative Portfolio Economics -->
+        <section id="economics-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 1</span>
+                        <span>• Market Shift & Economics</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Portfolio Spend Concentration & Agency Margin Shift</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        In automated media environments, creative assets are the primary lever for performance. However, creative volume in isolation yields diminishing returns. Portfolio telemetry proves that account spend concentrates drastically into a tiny decile of top-performing ads while legacy production costs erode fixed agency retainers.
+                    </p>
+                </div>
+
+                <!-- KPI Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Top 1 Single Ad</div>
+                        <div class="text-2xl font-extrabold text-indigo-600 mt-1">11.5%</div>
+                        <p class="text-xs text-slate-600 mt-1">Average share of total account budget captured by #1 ad.</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Top 10% Decile Assets</div>
+                        <div class="text-2xl font-extrabold text-slate-900 mt-1">75% - 95%</div>
+                        <p class="text-xs text-slate-600 mt-1">Share of account budget absorbed by the top decile assets.</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Legacy Production Cost</div>
+                        <div class="text-2xl font-extrabold text-rose-600 mt-1">$3,800</div>
+                        <p class="text-xs text-slate-600 mt-1">Average cost per variant (2025) under waterfall retainer models.</p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Agile Modular Cost</div>
+                        <div class="text-2xl font-extrabold text-emerald-600 mt-1">$1,400</div>
+                        <p class="text-xs text-slate-600 mt-1">Cost per variant in signal-driven agile creative pods.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Visualization & Breakdown Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h3 class="text-sm font-bold text-slate-800 mb-2">Portfolio Spend Distribution Analysis</h3>
+                            <div class="chart-container">
+                                <canvas id="portfolioChart"></canvas>
+                            </div>
+                            <p class="text-xs text-center text-slate-500 mt-2">Interactive: Hover over segments to inspect budget capture and performance multiples vs median.</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 space-y-4">
+                        <h3 class="text-lg font-bold text-slate-900">Empirical Performance Differentials</h3>
+                        <div class="space-y-3">
+                            <div class="p-3.5 bg-indigo-50/60 border border-indigo-100 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm text-indigo-950">Top 1 Winner Asset</span>
+                                    <span class="text-xs font-semibold bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded">2.5x - 3.0x CTR</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">Generates ~2.0x higher Social CVR compared to account median.</p>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm text-slate-800">Top 5 Core Ads</span>
+                                    <span class="text-xs font-semibold bg-slate-200 text-slate-700 px-2 py-0.5 rounded">34.0% Spend</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">Sustains main scaling velocity across multi-week campaign cycles.</p>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm text-slate-800">Top 10 Active Ads</span>
+                                    <span class="text-xs font-semibold bg-slate-200 text-slate-700 px-2 py-0.5 rounded">50.0% Spend</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">Accounts for 90% of total account conversion volume.</p>
+                            </div>
+
+                            <div class="p-3.5 bg-amber-50/60 border border-amber-200 rounded-lg">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-sm text-amber-950">Bottom 90% Remainder</span>
+                                    <span class="text-xs font-semibold bg-amber-200 text-amber-900 px-2 py-0.5 rounded">5% - 25% Spend</span>
+                                </div>
+                                <p class="text-xs text-amber-900/80 mt-1">Operates at/below target CPA; candidates for immediate micro-swaps.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2: Cross-Vertical Telemetry & Channel Performance Explorer -->
+        <section id="telemetry-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 2</span>
+                        <span>• Vertical & Channel Telemetry</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Industry Performance Benchmarks Explorer</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        Calibrating creative packages requires benchmarking asset iteration cycles against vertical-specific baselines. Select different industries to explore Social, Search, and Display metrics and learn operational resource allocation rules for each.
+                    </p>
+                </div>
+
+                <!-- Vertical Selector & Filter Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+                    <div>
+                        <label for="vertical-select" class="block text-xs font-bold text-slate-700 uppercase mb-1">Select Industry Vertical:</label>
+                        <select id="vertical-select" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 font-semibold px-3 py-2 w-56 sm:w-64">
+                            <option value="all">All Verticals (Overview)</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Shopping">Shopping & E-Commerce</option>
+                            <option value="Health & Fitness">Health & Fitness</option>
+                            <option value="Education">Education</option>
+                            <option value="Travel">Travel</option>
+                        </select>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button id="metric-ctr-btn" class="metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-indigo-600 text-white border-indigo-600">Click-Through Rate (CTR %)</button>
+                        <button id="metric-cvr-btn" class="metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-white text-slate-700 border-slate-300 hover:bg-slate-100">Conversion Rate (CVR %)</button>
+                        <button id="metric-cpm-btn" class="metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-white text-slate-700 border-slate-300 hover:bg-slate-100">Cost Per Mille (CPM $)</button>
+                    </div>
+                </div>
+
+                <!-- Telemetry Visuals & Contextual Insights -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Chart Column -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h3 id="vertical-chart-title" class="text-sm font-bold text-slate-800 mb-3">Cross-Vertical Comparison: CTR (%)</h3>
+                            <div class="chart-container">
+                                <canvas id="verticalChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Insight Panel -->
+                    <div class="lg:col-span-5 flex flex-col justify-between">
+                        <div id="vertical-insight-card" class="bg-indigo-50/50 border border-indigo-100 rounded-xl p-5 h-full flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span id="insight-badge" class="bg-indigo-600 text-white text-xs font-bold px-2.5 py-0.5 rounded">Gaming Focus</span>
+                                    <span class="text-xs font-semibold text-slate-500">Benchmark Insights</span>
+                                </div>
+                                <h4 id="insight-title" class="text-base font-bold text-indigo-950 mb-2">Rapid Iteration & Interactive Formats</h4>
+                                <p id="insight-body" class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">
+                                    Streamlined conversion paths yield an 18.0% conversion rate on Social and 17.0% on Search. Agencies servicing Gaming must prioritize rapid testing volume, automated programmatic variations, and playable interactive formats over prolonged refinement.
+                                </p>
+                            </div>
+                            <div id="insight-stats" class="grid grid-cols-3 gap-2 border-t border-indigo-100 pt-3">
+                                <div class="text-center">
+                                    <span class="block text-[10px] text-slate-500 uppercase font-bold">Social CVR</span>
+                                    <span id="stat-social-cvr" class="text-sm font-extrabold text-indigo-700">18.0%</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="block text-[10px] text-slate-500 uppercase font-bold">Search CVR</span>
+                                    <span id="stat-search-cvr" class="text-sm font-extrabold text-teal-700">17.0%</span>
+                                </div>
+                                <div class="text-center">
+                                    <span class="block text-[10px] text-slate-500 uppercase font-bold">Social CPM</span>
+                                    <span id="stat-social-cpm" class="text-sm font-extrabold text-slate-800">$4.20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cross Vertical Data Table -->
+                <div class="mt-8 overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 uppercase font-bold">
+                                <th class="p-3">Vertical Category</th>
+                                <th class="p-3">Social CTR</th>
+                                <th class="p-3">Social CVR</th>
+                                <th class="p-3">Social CPM</th>
+                                <th class="p-3">Search CTR</th>
+                                <th class="p-3">Search CVR</th>
+                                <th class="p-3">Search CPM</th>
+                                <th class="p-3">Display CTR</th>
+                                <th class="p-3">Display CVR</th>
+                                <th class="p-3">Display CPM</th>
+                            </tr>
+                        </thead>
+                        <tbody id="telemetry-table-body" class="divide-y divide-slate-200 font-medium">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3: Pod Architecture & Combinatorial Production Engine -->
+        <section id="pod-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 3</span>
+                        <span>• Operational Architecture</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Agile Pods & Combinatorial Production Engine</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        Agencies maximize output without margin decay by decoupling creative into modular layers (Hooks, Bodies, CTAs) and organizing cross-functional autonomous Pods powered by hybrid GenAI workflows.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                    <!-- Modular Math Engine (Interactive Calculator) -->
+                    <div class="lg:col-span-6 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-base font-bold text-slate-900">Combinatorial Asset Calculator</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-extrabold px-2.5 py-1 rounded">V = H × B × C</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mb-6">
+                                Adjust component modules below to see how modular production exponentially increases platform variation while keeping creation overhead minimal.
+                            </p>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                        <span>3-Sec Opening Hooks (H):</span>
+                                        <span id="hook-val" class="text-indigo-600 font-extrabold text-sm">5</span>
+                                    </div>
+                                    <input type="range" id="hook-slider" min="1" max="15" value="5" class="w-full accent-indigo-600 bg-slate-200 rounded-lg cursor-pointer h-2">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                        <span>Body Core Narrative Concepts (B):</span>
+                                        <span id="body-val" class="text-indigo-600 font-extrabold text-sm">5</span>
+                                    </div>
+                                    <input type="range" id="body-slider" min="1" max="15" value="5" class="w-full accent-indigo-600 bg-slate-200 rounded-lg cursor-pointer h-2">
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                        <span>Calls-to-Action / End-Cards (C):</span>
+                                        <span id="cta-val" class="text-indigo-600 font-extrabold text-sm">4</span>
+                                    </div>
+                                    <input type="range" id="cta-slider" min="1" max="10" value="4" class="w-full accent-indigo-600 bg-slate-200 rounded-lg cursor-pointer h-2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-white border border-slate-200 rounded-xl p-4 flex items-center justify-between">
+                            <div>
+                                <span class="block text-xs font-bold text-slate-500 uppercase">Total Discrete Modules</span>
+                                <span id="total-modules" class="text-lg font-black text-slate-800">14 Components</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="block text-xs font-bold text-indigo-600 uppercase">Platform-Ready Variants</span>
+                                <span id="total-variants" class="text-2xl font-black text-indigo-600">100 Ad Variants</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Autonomous Pod Structure Breakdown -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <h3 class="text-base font-bold text-slate-900">4-Role Performance Creative Pod Structure</h3>
+                        
+                        <div class="space-y-3">
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start space-x-3">
+                                <div class="bg-indigo-600 text-white font-bold text-xs p-2 rounded-lg shrink-0">01</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Senior Creative Strategist (Pod Lead)</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">Translates ad account telemetry, industry benchmarks, and psychological triggers into actionable weekly testing hypotheses.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start space-x-3">
+                                <div class="bg-teal-600 text-white font-bold text-xs p-2 rounded-lg shrink-0">02</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">AI Creative Designer</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">Executes static variations, generative image prompting, visual concepting, and direct-response motion design.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start space-x-3">
+                                <div class="bg-amber-600 text-white font-bold text-xs p-2 rounded-lg shrink-0">03</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Video Editor & Motion Designer</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">Focuses on vertical pacing, platform-native overlays, UGC assembly, and modular asset splicing for 9:16 delivery.</p>
+                                </div>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start space-x-3">
+                                <div class="bg-slate-800 text-white font-bold text-xs p-2 rounded-lg shrink-0">04</div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-900">Growth Telemetry Integrator</h4>
+                                    <p class="text-xs text-slate-600 mt-0.5">Connects production workflows directly to media buy telemetry, monitoring fatigue triggers and feeding post IDs back to pod queues.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table: Legacy Waterfall vs GenAI Agile Pod -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                    <h3 class="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wider">Production Efficiency: Legacy Waterfall vs Hybrid GenAI Pod</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="border-b border-slate-200 text-slate-500">
+                                    <th class="pb-2 font-bold uppercase">Operational Metric</th>
+                                    <th class="pb-2 font-bold uppercase text-rose-700">Legacy Waterfall Agency</th>
+                                    <th class="pb-2 font-bold uppercase text-emerald-700">Hybrid GenAI Agile Pod</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-700">
+                                <tr>
+                                    <td class="py-2.5 font-bold">Cycle Time (Brief to Delivery)</td>
+                                    <td class="py-2.5">14 to 28 business days</td>
+                                    <td class="py-2.5 font-bold text-emerald-700">3 to 7 business days</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-bold">Loaded Cost Per Variant</td>
+                                    <td class="py-2.5">$500 to $2,000+ per asset</td>
+                                    <td class="py-2.5 font-bold text-emerald-700">$8 to $40 compute + labor allocation</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-bold">Monthly Asset Output</td>
+                                    <td class="py-2.5">3 to 6 polished concepts</td>
+                                    <td class="py-2.5 font-bold text-emerald-700">20 to 100+ modular assets</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-bold">Revision Turnaround</td>
+                                    <td class="py-2.5">3 to 5 business days</td>
+                                    <td class="py-2.5 font-bold text-emerald-700">&lt;24 hours via layered project files</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2.5 font-bold">Optimization Basis</td>
+                                    <td class="py-2.5">Subjective aesthetic opinions</td>
+                                    <td class="py-2.5 font-bold text-emerald-700">Real-time media telemetry & CPA trends</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 4: Productized Service Package Matrix -->
+        <section id="packages-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 4</span>
+                        <span>• Commercial Architecture</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Three-Tier Productized Service Package Blueprints</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        To replace commoditized billable hours, agencies package outputs into three standardized product tiers combining content delivery, account telemetry, automated testing, and post-tap custom experience infrastructure.
+                    </p>
+                </div>
+
+                <!-- Package Tier Interactive Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <!-- Tier 1 -->
+                    <div class="bg-slate-50 border border-slate-200 hover:border-indigo-300 transition-all rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-slate-200 text-slate-800 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Tier 1: Entry POC</span>
+                                <span class="text-xs text-slate-500 font-bold">30-Day Project</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-1">Signal Audit & Sprint</h3>
+                            <p class="text-xs text-slate-600 mb-4">Low-friction diagnostic audit and isolated sprint to establish baseline Return on Creative without long-term retainer friction.</p>
+                            
+                            <div class="text-2xl font-black text-slate-900 mb-6">$3,500 <span class="text-xs font-normal text-slate-500">– $6,500 flat</span></div>
+
+                            <div class="space-y-2 border-t border-slate-200 pt-4 text-xs">
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>90-Day Account Audit</strong> vs vertical benchmarks</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>1 Core Motivation Theme</strong> mapped to angle</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>10 Hook & Opening Frame Variations</strong></span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span>Isolated ROC testing framework setup</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200">
+                            <span class="block text-[10px] uppercase font-bold text-slate-400">Target Client Spend</span>
+                            <span class="text-xs font-bold text-slate-700">&lt;$1,000 / day spend</span>
+                        </div>
+                    </div>
+
+                    <!-- Tier 2 (Hero) -->
+                    <div class="bg-indigo-900 text-white border-2 border-indigo-600 shadow-xl rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-lg">
+                            Most Popular (Hero)
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-indigo-800 text-indigo-200 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Tier 2: Growth Engine</span>
+                                <span class="text-xs text-indigo-300 font-bold">Recurring Subscription</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-white mb-1">Performance Creative Engine</h3>
+                            <p class="text-xs text-indigo-200 mb-4">Monthly sprint model designed to maintain account velocity, combat ad fatigue, and systematically expand winning hit rates.</p>
+                            
+                            <div class="text-2xl font-black text-white mb-6">$5,000 <span class="text-xs font-normal text-indigo-300">– $9,500 / mo</span></div>
+
+                            <div class="space-y-2 border-t border-indigo-800 pt-4 text-xs">
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-teal-400 font-bold">✓</span>
+                                    <span><strong>2 Strategic Core Concepts</strong> / month</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-teal-400 font-bold">✓</span>
+                                    <span><strong>15–20 Signal-Driven Variations</strong> (UGC, static, video)</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-teal-400 font-bold">✓</span>
+                                    <span><strong>3-Stage Signal Testing Framework</strong></span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-teal-400 font-bold">✓</span>
+                                    <span>Bi-weekly feedback loops & Post ID winner graduation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-indigo-800">
+                            <span class="block text-[10px] uppercase font-bold text-indigo-300">Target Client Spend</span>
+                            <span class="text-xs font-bold text-white">$1,000 – $10,000 / day spend</span>
+                        </div>
+                    </div>
+
+                    <!-- Tier 3 -->
+                    <div class="bg-slate-50 border border-slate-200 hover:border-indigo-300 transition-all rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-slate-200 text-slate-800 text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">Tier 3: Enterprise Scale</span>
+                                <span class="text-xs text-slate-500 font-bold">Full Funnel Subscription</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-slate-900 mb-1">Full-Funnel Experience Engine</h3>
+                            <p class="text-xs text-slate-600 mb-4">End-to-end creative and CRO connecting dynamic ad creative directly to post-tap custom landing page experiences.</p>
+                            
+                            <div class="text-2xl font-black text-slate-900 mb-6">$12,000 <span class="text-xs font-normal text-slate-500">– $22,000 / mo</span></div>
+
+                            <div class="space-y-2 border-t border-slate-200 pt-4 text-xs">
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>4 Strategic Core Concepts</strong> / month</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>30–40 Hybrid GenAI Variations</strong></span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span><strong>Up to 4 Custom Product Pages (CPPs)</strong> / Landing Page variants</span>
+                                </div>
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-indigo-600 font-bold">✓</span>
+                                    <span>Interactive Playable Units & Dynamic Event Triggers</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-200">
+                            <span class="block text-[10px] uppercase font-bold text-slate-400">Target Client Spend</span>
+                            <span class="text-xs font-bold text-slate-700">$10,000 – $100,000+ / day spend</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deliverable Asset Impact Highlights -->
+                <div class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-2xl p-6 border border-slate-800">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-indigo-400 mb-4">High-Performing Deliverable Lift Telemetry</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+                            <span class="block font-bold text-white text-sm">Interactive Playables & IECs</span>
+                            <span class="block text-emerald-400 font-extrabold text-base mt-1">20x Install Lift</span>
+                            <p class="text-slate-300 text-[11px] mt-1">Delivers 7x higher CVR and 40% higher CTR over static baseline.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+                            <span class="block font-bold text-white text-sm">Platform Native UGC Videos</span>
+                            <span class="block text-teal-400 font-extrabold text-base mt-1">+152% Conversion Rate</span>
+                            <p class="text-slate-300 text-[11px] mt-1">Impression-to-install lift across non-gaming web & mobile apps.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+                            <span class="block font-bold text-white text-sm">Custom Product Pages (CPPs)</span>
+                            <span class="block text-amber-400 font-extrabold text-base mt-1">33% Reduction in CPA</span>
+                            <p class="text-slate-300 text-[11px] mt-1">+17% Tap-Through Rate (TTR) and +12% CVR by aligning post-tap narrative.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3.5">
+                            <span class="block font-bold text-white text-sm">Live Event Playable Units</span>
+                            <span class="block text-indigo-300 font-extrabold text-base mt-1">442x Reach Expansion</span>
+                            <p class="text-slate-300 text-[11px] mt-1">3.4x capture rate during major sporting and cultural moments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 5: Testing Methodology, CPC Fatigue Simulator & ROC Calculator -->
+        <section id="testing-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 5</span>
+                        <span>• Measurement & Rigor</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Testing Rigor, CPC Fatigue Decay & Return on Creative</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        Creative volume without testing structure risks local minima algorithm traps. Explore the 10-week CPC fatigue curve, inspect the 3-Stage Testing Framework, and calculate Return on Creative (ROC) lift.
+                    </p>
+                </div>
+
+                <!-- Fatigue Decay Simulator & Line Chart -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                    <div class="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-sm font-bold text-slate-900">10-Week Campaign CPC Fatigue Curve</h3>
+                            <span class="text-xs bg-rose-100 text-rose-800 font-bold px-2.5 py-0.5 rounded">1.60x CPC Expansion at W8</span>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="fatigueChart"></canvas>
+                        </div>
+                        <p class="text-xs text-slate-500 text-center mt-2">Interactive: Select a week slider below to view lifecycle triggers and required pod micro-swaps.</p>
+
+                        <!-- Week Slider Control -->
+                        <div class="mt-4 pt-4 border-t border-slate-200">
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                <span>Simulate Flight Duration:</span>
+                                <span id="week-display" class="text-indigo-600 font-extrabold">Week 5 (1.43x CPC)</span>
+                            </div>
+                            <input type="range" id="week-slider" min="1" max="10" value="5" class="w-full accent-indigo-600 bg-slate-200 rounded-lg cursor-pointer h-2">
+                        </div>
+                    </div>
+
+                    <!-- Fatigue Lifecycle Detail Card -->
+                    <div class="lg:col-span-5 flex flex-col justify-between bg-indigo-900 text-white rounded-2xl p-6">
+                        <div>
+                            <span class="text-[10px] font-black uppercase text-indigo-300 tracking-wider">Lifecycle Stage & Action Trigger</span>
+                            <h4 id="fatigue-stage-title" class="text-xl font-extrabold mt-1 mb-2 text-white">Early Fatigue Window</h4>
+                            <div id="fatigue-factor-badge" class="inline-block bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-2.5 py-1 rounded mb-4">
+                                Normalized CPC Factor: 1.43x
+                            </div>
+                            <p id="fatigue-stage-desc" class="text-xs sm:text-sm text-indigo-100 leading-relaxed mb-6">
+                                Click costs begin a consistent 3% to 4% weekly expansion. Pod queues should prepare Stage 2 structural variations to intercept performance dips before account CPA destabilizes.
+                            </p>
+                        </div>
+
+                        <div class="bg-indigo-950/80 border border-indigo-800 rounded-xl p-4 text-xs space-y-2">
+                            <span class="block font-bold text-indigo-300 uppercase text-[10px]">3 Leading Indicators of Fatigue</span>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-rose-400 font-bold">●</span>
+                                <span><strong>Spend Prioritization Decay:</strong> Budget share drops in 72h window.</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-amber-400 font-bold">●</span>
+                                <span><strong>Front-End CPC Creep:</strong> Rising click costs while impressions lag.</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-teal-400 font-bold">●</span>
+                                <span><strong>Concept Saturation:</strong> Declining marginal conversion efficiency.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3-Stage Testing Framework Grid -->
+                <div class="mb-8">
+                    <h3 class="text-base font-bold text-slate-900 mb-4">The 3-Stage Signal-Led Testing Framework</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-indigo-600 text-white font-bold text-xs px-2 py-0.5 rounded">Stage 1</span>
+                                <h4 class="text-xs font-bold text-slate-900">Concept & Motivation Validation</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-3">Evaluates 4 user psychological motivations against 3 execution formats in dedicated testing ad sets.</p>
+                            <div class="text-[11px] text-slate-500 border-t border-slate-200 pt-2 space-y-1">
+                                <div><strong>Budget:</strong> ~10x target CPA per concept.</div>
+                                <div><strong>Kill Rule:</strong> Pause if &gt;2x target CPA after 500+ impressions.</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-teal-600 text-white font-bold text-xs px-2 py-0.5 rounded">Stage 2</span>
+                                <h4 class="text-xs font-bold text-slate-900">Structural Refinement</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-3">Optimizes structural pacing, clip duration (6s punch vs 30s walkthrough), and on-screen talent demographics.</p>
+                            <div class="text-[11px] text-slate-500 border-t border-slate-200 pt-2 space-y-1">
+                                <div><strong>Flight:</strong> 5–7 day controlled multivariate test.</div>
+                                <div><strong>Decision:</strong> Maximize downstream CVR efficiency.</div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-amber-600 text-white font-bold text-xs px-2 py-0.5 rounded">Stage 3</span>
+                                <h4 class="text-xs font-bold text-slate-900">Scale & Micro-Swaps</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-3">Graduates winning assets using original Post IDs to preserve social proof; deploys opening frame swaps to combat fatigue.</p>
+                            <div class="text-[11px] text-slate-500 border-t border-slate-200 pt-2 space-y-1">
+                                <div><strong>Execution:</strong> Micro-swaps injected at leading fatigue indicators.</div>
+                                <div><strong>Outcome:</strong> Extends winner lifespan by 3–5 weeks.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Return on Creative (ROC) Calculator -->
+                <div class="bg-slate-900 text-white border border-slate-800 rounded-2xl p-6">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-800 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-base font-bold text-white">Return on Creative (ROC) Lift Calculator</h3>
+                            <p class="text-xs text-slate-400 mt-1">Isolate the direct financial returns generated by creative iterations from media bidding fluctuations.</p>
+                        </div>
+                        <span class="mt-2 sm:mt-0 text-xs bg-indigo-600 text-white font-mono px-3 py-1 rounded">ROC Lift % = [(ROAS_Variant - ROAS_Base) / ROAS_Base] × 100</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Baseline ROAS (x):</label>
+                            <input type="number" id="base-roas" value="1.80" step="0.05" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-bold rounded-lg px-3 py-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">New Variant ROAS (x):</label>
+                            <input type="number" id="variant-roas" value="2.45" step="0.05" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-bold rounded-lg px-3 py-2 focus:ring-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">Baseline Control CPA ($):</label>
+                            <input type="number" id="base-cpa" value="48.00" step="1.00" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-bold rounded-lg px-3 py-2 focus:ring-indigo-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase">Calculated ROC Lift</span>
+                            <span id="roc-lift-output" class="text-2xl font-black text-emerald-400 mt-1">+36.11%</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-400 uppercase">Implied New Variant CPA</span>
+                            <span id="implied-cpa-output" class="text-2xl font-black text-teal-300 mt-1">$35.27</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 6: Agency Commercial Rollout & Client Transition Strategy -->
+        <section id="rollout-section" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-indigo-600 tracking-wide uppercase mb-1">
+                        <span>● Module 6</span>
+                        <span>• Agency Implementation</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Commercial Rollout & Client Transition Playbook</h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base leading-relaxed">
+                        Transitioning an agency from open-ended billable hours to productized creative bundles requires a phased rollout to protect service margins and establish clear operational boundaries.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 relative">
+                        <div class="text-xs font-black text-indigo-600 uppercase mb-2">Phase 1 ● Internal Setup</div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Scope Boundaries & Capacity</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Define exact output boundaries to eliminate unbilled revisions. Cap Tier 2 at 2 core concepts and 15–20 variants. Align team capacity around shared digital asset management and frame-accurate review software.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 text-[11px] text-slate-700">
+                            <strong>Key Action:</strong> Transition creatives to 4-role pods and set rigid batch production deadlines.
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 relative">
+                        <div class="text-xs font-black text-teal-600 uppercase mb-2">Phase 2 ● Pilot Rollout</div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Land-and-Expand Strategy</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Identify 1-2 existing growth-stage clients facing creative fatigue or rising CPAs. Deploy Tier 1 (30-day Audit & Sprint) to demonstrate isolated ROC improvements before proposing long-term Tier 2/3 subscriptions.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 text-[11px] text-slate-700">
+                            <strong>Key Action:</strong> Use Tier 1 empirical POC proof to convert clients into recurring monthly subscriptions.
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 relative">
+                        <div class="text-xs font-black text-amber-600 uppercase mb-2">Phase 3 ● Commercial Messaging</div>
+                        <h3 class="text-base font-bold text-slate-900 mb-2">Repositioning Sales Pitches</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Pitch creative as a measurable growth driver, leading with structured testing systems that mitigate the 1.6x CPC fatigue curve and capture the 75–95% decile spend share.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 text-[11px] text-slate-700">
+                            <strong>Key Action:</strong> Shift client check-ins from subjective aesthetic reviews to monthly motivation layer telemetry.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-8 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div>
+                <span class="font-bold text-slate-200">Strategic Modular Creative Architecture</span>
+                <span class="mx-2">•</span>
+                <span>Interactive Performance Report</span>
+            </div>
+            <div class="text-slate-500">
+                Empirical benchmarks derived from cross-channel digital media telemetry & Singular Creative Benchmark Data.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Application Code -->
+    <script>
+        // Data Structures from Source Report
+        const portfolioData = {
+            labels: ['Top 1 Single Ad', 'Top 5 Core Ads', 'Top 10 Active Ads', 'Top 10% Decile Assets', 'Bottom 90% Remainder'],
+            spendShare: [11.5, 34.0, 50.0, 85.0, 15.0], // Spend share representation
+            descriptions: [
+                '11.5% of total budget. Differential: 2.5x - 3.0x higher Social CTR, ~2.0x Social CVR.',
+                '34.0% of total budget. Sustained primary scaling driver across multi-week cycles.',
+                '50.0% of total budget. Represents 90% of total account conversion volume.',
+                '75% - 95% of total budget allocation across accounts.',
+                '5% - 25% of total budget allocation. Operates at/below target CPA.'
+            ]
+        };
+
+        const verticalTelemetry = [
+            { vertical: 'Gaming', socialCTR: 1.2, socialCVR: 18.0, socialCPM: 4.20, searchCTR: 2.9, searchCVR: 17.0, searchCPM: 3.50, displayCTR: 2.7, displayCVR: 4.2, displayCPM: 0.60, insightTitle: 'Rapid Volume & Playable Focus', insightText: 'Streamlined conversion paths yield an 18.0% conversion rate on Social and 17.0% on Search. Prioritize rapid iteration velocity, programmatic variations, and interactive playable formats.' },
+            { vertical: 'Finance', socialCTR: 0.9, socialCVR: 3.9, socialCPM: 1.60, searchCTR: 1.8, searchCVR: 9.4, searchCPM: 3.20, displayCTR: 1.7, displayCVR: 0.4, displayCPM: 0.60, insightTitle: 'Sequential Funnel Trust Building', insightText: 'A 2.4-fold disparity emerges between Social CVR (3.9%) and Search CVR (9.4%). Social builds product awareness and trust; Search captures high-intent prospects down-funnel.' },
+            { vertical: 'Entertainment', socialCTR: 1.0, socialCVR: 4.1, socialCPM: 3.40, searchCTR: 3.5, searchCVR: 11.9, searchCPM: 5.50, displayCTR: 5.2, displayCVR: 4.3, displayCPM: 1.70, insightTitle: 'High Display & Search Engagement', insightText: 'Display CTR reaches 5.2% with strong search interest (3.5% CTR). Creative packages must align rich media teasers with immediate search intent capture.' },
+            { vertical: 'Shopping', socialCTR: 1.4, socialCVR: 2.1, socialCPM: 1.50, searchCTR: 2.4, searchCVR: 1.6, searchCPM: 2.40, displayCTR: 1.6, displayCVR: 0.3, displayCPM: 0.90, insightTitle: 'Visual Discovery & Deferred Retargeting', insightText: 'Consumers utilize social feeds for visual discovery (1.4% CTR) but convert outside immediate windows. Incorporate deferred retargeting pools and custom landing pages.' },
+            { vertical: 'Health & Fitness', socialCTR: 1.3, socialCVR: 7.3, socialCPM: 8.10, searchCTR: 2.5, searchCVR: 5.6, searchCPM: 7.00, displayCTR: 0, displayCVR: 0, displayCPM: 0, insightTitle: 'High CPM Fatigue Protection', insightText: 'Inventory costs are elevated ($8.10 Social CPM). Delays in identifying winning creative carry severe financial cost; requires automated fatigue alerts.' },
+            { vertical: 'Education', socialCTR: 0.9, socialCVR: 7.9, socialCPM: 3.60, searchCTR: 1.6, searchCVR: 14.1, searchCPM: 5.40, displayCTR: 0, displayCVR: 0, displayCPM: 0, insightTitle: 'High Search Intent Conversion', insightText: 'Search conversion rates hit 14.1%. Educational video assets on Social must feed high-intent search landing pages with motivation-aligned messaging.' },
+            { vertical: 'Travel', socialCTR: 1.0, socialCVR: 9.4, socialCPM: 2.80, searchCTR: 2.0, searchCVR: 5.8, searchCPM: 3.50, displayCTR: 0, displayCVR: 0, displayCPM: 0, insightTitle: 'High Social Decision Conversion', insightText: 'Social conversion reaches 9.4%. Dynamic, UGC visual trip walkthroughs driving custom product pages significantly compress booking decision time.' }
+        ];
+
+        const fatigueCurveData = [
+            { week: 1, factor: 1.00, title: 'Asset Launch & Signal Calibration', desc: 'Initial auction exploration. Delivery models calibrate against vertical conversion baselines.' },
+            { week: 2, factor: 1.18, title: 'Algorithmic Stabilization', desc: 'Delivery stabilizes into optimal audience pockets. CPA operates at maximum baseline efficiency.' },
+            { week: 3, factor: 1.26, title: 'Core Scale Window', desc: 'Creative operates at peak conversion efficiency. High-volume delivery phase across primary placements.' },
+            { week: 4, factor: 1.25, title: 'Efficient Delivery Window', desc: 'Stable performance. Pod queues should begin preparing Stage 2 structural variations for upcoming refresh.' },
+            { week: 5, factor: 1.43, title: 'Early Fatigue Window', desc: 'Click costs begin a consistent 3% to 4% weekly expansion. Frequency saturation builds in primary audiences.' },
+            { week: 6, factor: 1.45, title: 'Audience Responsiveness Softening', desc: 'Initial frequency saturation; audience responsiveness softens across core ad sets.' },
+            { week: 7, factor: 1.39, title: 'Temporary Placement Stabilization', desc: 'Minor temporary stabilization as delivery algorithms expand into broader secondary placements.' },
+            { week: 8, factor: 1.60, title: 'Critical Fatigue Threshold', desc: 'Winner operates near baseline target CPA limit. Click costs expand to 1.60x initial baseline.' },
+            { week: 9, factor: 1.56, title: 'Approaching Unprofitability', desc: 'Performance approaches unprofitability threshold. Mandatory micro-swap deployment required.' },
+            { week: 10, factor: 1.55, title: 'Depreciated Asset', desc: 'Asset fully depreciated. Must be paused and replaced by fresh Stage 3 modular variants.' }
+        ];
+
+        // Global Chart Instances
+        let portfolioChartInstance = null;
+        let verticalChartInstance = null;
+        let fatigueChartInstance = null;
+
+        // Active State
+        let currentMetric = 'CTR'; // CTR, CVR, CPM
+
+        // Initialize Navigation Links
+        function initNavigation() {
+            const navItems = [
+                { id: 'economics-section', label: '1. Economics' },
+                { id: 'telemetry-section', label: '2. Industry Telemetry' },
+                { id: 'pod-section', label: '3. Agile Pod Engine' },
+                { id: 'packages-section', label: '4. Service Packages' },
+                { id: 'testing-section', label: '5. Testing & Fatigue' },
+                { id: 'rollout-section', label: '6. Rollout Playbook' }
+            ];
+
+            const desktopNav = document.getElementById('desktop-nav');
+            const mobileNav = document.getElementById('mobile-nav');
+
+            navItems.forEach(item => {
+                const dLink = document.createElement('a');
+                dLink.href = `#${item.id}`;
+                dLink.className = 'text-xs font-semibold text-slate-300 hover:text-white px-3 py-2 rounded-md hover:bg-slate-800 transition-colors';
+                dLink.innerText = item.label;
+                desktopNav.appendChild(dLink);
+
+                const mLink = document.createElement('a');
+                mLink.href = `#${item.id}`;
+                mLink.className = 'inline-block text-xs font-semibold text-slate-300 hover:text-white px-3 py-1.5 rounded-md bg-slate-700/50';
+                mLink.innerText = item.label;
+                mobileNav.appendChild(mLink);
+            });
+        }
+
+        // Module 1: Portfolio Chart Initialization
+        function initPortfolioChart() {
+            const ctx = document.getElementById('portfolioChart').getContext('2d');
+            portfolioChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Top 1 Ad', 'Top 5 Ads', 'Top 10 Ads', 'Top 10% Decile', 'Bottom 90%'],
+                    datasets: [{
+                        label: 'Average Share of Account Spend Captured (%)',
+                        data: [11.5, 34.0, 50.0, 85.0, 15.0],
+                        backgroundColor: [
+                            '#4f46e5', // indigo
+                            '#6366f1',
+                            '#818cf8',
+                            '#0d9488', // teal
+                            '#f59e0b'  // amber
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Budget Capture: ${context.raw}%`;
+                                },
+                                afterLabel: function(context) {
+                                    return portfolioData.descriptions[context.dataIndex];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { callback: v => v + '%' },
+                            title: { display: true, text: 'Share of Account Budget (%)', font: { size: 10 } }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Module 2: Vertical Telemetry Chart & Table Initialization
+        function initVerticalChart() {
+            const ctx = document.getElementById('verticalChart').getContext('2d');
+            
+            verticalChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: getVerticalChartData('CTR'),
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const unit = currentMetric === 'CPM' ? '$' : '%';
+                                    const val = currentMetric === 'CPM' ? `$${context.raw.toFixed(2)}` : `${context.raw}%`;
+                                    return `${context.dataset.label}: ${val}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return currentMetric === 'CPM' ? '$' + value : value + '%';
+                                }
+                            }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            populateTelemetryTable();
+            updateVerticalInsightCard('Gaming');
+        }
+
+        function getVerticalChartData(metric) {
+            const labels = verticalTelemetry.map(v => v.vertical);
+            let keySocial, keySearch, keyDisplay;
+
+            if (metric === 'CTR') {
+                keySocial = 'socialCTR'; keySearch = 'searchCTR'; keyDisplay = 'displayCTR';
+            } else if (metric === 'CVR') {
+                keySocial = 'socialCVR'; keySearch = 'searchCVR'; keyDisplay = 'displayCVR';
+            } else {
+                keySocial = 'socialCPM'; keySearch = 'searchCPM'; keyDisplay = 'displayCPM';
+            }
+
+            return {
+                labels: labels,
+                datasets: [
+                    {
+                        label: `Social ${metric}`,
+                        data: verticalTelemetry.map(v => v[keySocial]),
+                        backgroundColor: '#4f46e5'
+                    },
+                    {
+                        label: `Search ${metric}`,
+                        data: verticalTelemetry.map(v => v[keySearch]),
+                        backgroundColor: '#0d9488'
+                    },
+                    {
+                        label: `Display ${metric}`,
+                        data: verticalTelemetry.map(v => v[keyDisplay]),
+                        backgroundColor: '#f59e0b'
+                    }
+                ]
+            };
+        }
+
+        function updateMetricView(metric) {
+            currentMetric = metric;
+            document.getElementById('vertical-chart-title').innerText = `Cross-Vertical Comparison: ${metric} (${metric === 'CPM' ? '$' : '%'})`;
+            
+            // Toggle active button style
+            document.querySelectorAll('.metric-btn').forEach(btn => {
+                btn.className = 'metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-white text-slate-700 border-slate-300 hover:bg-slate-100';
+            });
+            
+            if (metric === 'CTR') document.getElementById('metric-ctr-btn').className = 'metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-indigo-600 text-white border-indigo-600';
+            if (metric === 'CVR') document.getElementById('metric-cvr-btn').className = 'metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-indigo-600 text-white border-indigo-600';
+            if (metric === 'CPM') document.getElementById('metric-cpm-btn').className = 'metric-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-indigo-600 text-white border-indigo-600';
+
+            verticalChartInstance.data = getVerticalChartData(metric);
+            verticalChartInstance.update();
+        }
+
+        function populateTelemetryTable() {
+            const tbody = document.getElementById('telemetry-table-body');
+            tbody.innerHTML = '';
+
+            verticalTelemetry.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition-colors';
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-900">${item.vertical}</td>
+                    <td class="p-3 text-indigo-700">${item.socialCTR}%</td>
+                    <td class="p-3 text-indigo-700">${item.socialCVR}%</td>
+                    <td class="p-3 text-indigo-700">$${item.socialCPM.toFixed(2)}</td>
+                    <td class="p-3 text-teal-700">${item.searchCTR}%</td>
+                    <td class="p-3 text-teal-700">${item.searchCVR}%</td>
+                    <td class="p-3 text-teal-700">$${item.searchCPM.toFixed(2)}</td>
+                    <td class="p-3 text-amber-700">${item.displayCTR ? item.displayCTR + '%' : '—'}</td>
+                    <td class="p-3 text-amber-700">${item.displayCVR ? item.displayCVR + '%' : '—'}</td>
+                    <td class="p-3 text-amber-700">${item.displayCPM ? '$' + item.displayCPM.toFixed(2) : '—'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateVerticalInsightCard(selectedVertical) {
+            let target;
+            if (selectedVertical === 'all') {
+                target = verticalTelemetry[0]; // fallback gaming
+            } else {
+                target = verticalTelemetry.find(v => v.vertical === selectedVertical) || verticalTelemetry[0];
+            }
+
+            document.getElementById('insight-badge').innerText = `${target.vertical} Strategic Telemetry`;
+            document.getElementById('insight-title').innerText = target.insightTitle;
+            document.getElementById('insight-body').innerText = target.insightText;
+            document.getElementById('stat-social-cvr').innerText = `${target.socialCVR}%`;
+            document.getElementById('stat-search-cvr').innerText = `${target.searchCVR}%`;
+            document.getElementById('stat-social-cpm').innerText = `$${target.socialCPM.toFixed(2)}`;
+        }
+
+        // Module 3: Combinatorial Production Engine Logic
+        function initCombinatorialCalculator() {
+            const hSlider = document.getElementById('hook-slider');
+            const bSlider = document.getElementById('body-slider');
+            const cSlider = document.getElementById('cta-slider');
+
+            function recalculate() {
+                const h = parseInt(hSlider.value);
+                const b = parseInt(bSlider.value);
+                const c = parseInt(cSlider.value);
+
+                document.getElementById('hook-val').innerText = h;
+                document.getElementById('body-val').innerText = b;
+                document.getElementById('cta-val').innerText = c;
+
+                const totalComponents = h + b + c;
+                const totalVariants = h * b * c;
+
+                document.getElementById('total-modules').innerText = `${totalComponents} Components`;
+                document.getElementById('total-variants').innerText = `${totalVariants} Ad Variants`;
+            }
+
+            hSlider.addEventListener('input', recalculate);
+            bSlider.addEventListener('input', recalculate);
+            cSlider.addEventListener('input', recalculate);
+            recalculate();
+        }
+
+        // Module 5: Fatigue Chart & Simulator Logic
+        function initFatigueChart() {
+            const ctx = document.getElementById('fatigueChart').getContext('2d');
+            
+            fatigueChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: fatigueCurveData.map(d => `W${d.week}`),
+                    datasets: [{
+                        label: 'Normalized CPC Factor (1.0x Baseline)',
+                        data: fatigueCurveData.map(d => d.factor),
+                        borderColor: '#e11d48', // rose
+                        backgroundColor: 'rgba(225, 29, 72, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: fatigueCurveData.map(d => d.week === 8 ? '#991b1b' : '#e11d48'),
+                        pointRadius: fatigueCurveData.map(d => d.week === 8 ? 6 : 4)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => `Normalized CPC: ${ctx.raw}x baseline`
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0.9,
+                            max: 1.8,
+                            ticks: { callback: v => v + 'x' },
+                            title: { display: true, text: 'CPC Inflation Factor', font: { size: 10 } }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const weekSlider = document.getElementById('week-slider');
+            weekSlider.addEventListener('input', (e) => {
+                const w = parseInt(e.target.value);
+                updateFatigueStageCard(w);
+            });
+
+            updateFatigueStageCard(5);
+        }
+
+        function updateFatigueStageCard(weekNumber) {
+            const stage = fatigueCurveData.find(d => d.week === weekNumber);
+            document.getElementById('week-display').innerText = `Week ${stage.week} (${stage.factor}x CPC)`;
+            document.getElementById('fatigue-stage-title').innerText = stage.title;
+            document.getElementById('fatigue-factor-badge').innerText = `Normalized CPC Factor: ${stage.factor}x`;
+            document.getElementById('fatigue-stage-desc').innerText = stage.desc;
+        }
+
+        // Module 5: ROC Lift Calculator Logic
+        function initRocCalculator() {
+            const baseRoasInput = document.getElementById('base-roas');
+            const variantRoasInput = document.getElementById('variant-roas');
+            const baseCpaInput = document.getElementById('base-cpa');
+
+            function calculateROC() {
+                const baseRoas = parseFloat(baseRoasInput.value) || 1.0;
+                const variantRoas = parseFloat(variantRoasInput.value) || 1.0;
+                const baseCpa = parseFloat(baseCpaInput.value) || 0.0;
+
+                const rocLift = ((variantRoas - baseRoas) / baseRoas) * 100;
+                const impliedCpa = baseRoas > 0 ? (baseCpa * (baseRoas / variantRoas)) : 0;
+
+                const rocSign = rocLift >= 0 ? '+' : '';
+                document.getElementById('roc-lift-output').innerText = `${rocSign}${rocLift.toFixed(2)}%`;
+                document.getElementById('implied-cpa-output').innerText = `$${impliedCpa.toFixed(2)}`;
+                
+                if (rocLift >= 0) {
+                    document.getElementById('roc-lift-output').className = 'text-2xl font-black text-emerald-400 mt-1';
+                } else {
+                    document.getElementById('roc-lift-output').className = 'text-2xl font-black text-rose-400 mt-1';
+                }
+            }
+
+            baseRoasInput.addEventListener('input', calculateROC);
+            variantRoasInput.addEventListener('input', calculateROC);
+            baseCpaInput.addEventListener('input', calculateROC);
+            calculateROC();
+        }
+
+        // Document Loaded Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
+            initPortfolioChart();
+            initVerticalChart();
+            initCombinatorialCalculator();
+            initFatigueChart();
+            initRocCalculator();
+
+            // Event Listeners for Metric Buttons
+            document.getElementById('metric-ctr-btn').addEventListener('click', () => updateMetricView('CTR'));
+            document.getElementById('metric-cvr-btn').addEventListener('click', () => updateMetricView('CVR'));
+            document.getElementById('metric-cpm-btn').addEventListener('click', () => updateMetricView('CPM'));
+
+            // Vertical Selector Listener
+            document.getElementById('vertical-select').addEventListener('change', (e) => {
+                updateVerticalInsightCard(e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>
